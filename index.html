@@ -10,54 +10,59 @@
     integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" 
     crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    
   </head>
   <body>
-
     <div class="container">
-     <!--start div playerOne--> 
+      <!--start div playerOne--> 
       <div class="playerOne">
-          <p>PLAYER 1</p>
-          <div id="scoreOne"></div>
-          <button class="btn btn-danger">CURRENT</button>
+        <p id="playerOneP">PLAYER 1</p>
+        <div id="scoreOne">
+          
         </div>
-        
-           <!--end div playerOne--> 
-     <!--start div playerTwo-->
-      <div class="playerTwo">
-
-          <p>PLAYER 2</p>
-          <div id="scoreTwo">75</div>
-          <button class="btn btn-danger">CURRENT</button>
-
+        <div class="current">
+          <button id="currentOne" class="btn btn-danger">CURRENT</button>
+        </div>
       </div>
-     <!--end div playerTwo-->
-     <!-- start div center for button--> 
+      <!--end div playerOne--> 
+      <!--start div playerTwo-->
+      <div class="playerTwo">
+        <p id="playerTwoP">PLAYER 2</p>
+        <div id="scoreTwo">
+          
+        </div>
+        <div class="current">
+          <button id="currentTwo" class="btn btn-danger" >CURRENT</button>
+        </div>
+      </div>
+      <!--end div playerTwo-->
+      <!-- start div center for buttons--> 
       <div class="center">
         <div class="newgame">
           <button id="newgame">
-            <img src="img/add_red_button_icon_227862.png">
-             NEW GAME 
+            <img src="img/button/add_red_button_icon_227862.png">
+            NEW GAME 
           </button>
         </div>
         <div class="dice">
-          <div id="objDice" class="dice-face" data="1" >
-
-          </div>
+          <div id="objDice" class="dice-face">
+            <p id="objDiceImg">
+              <img  class=imgDice src="img/five.png">
+           </p>
+           </div>
         </div>
         <div class="dice-buttons">
           <button id="diceBtnRoll">
-            <img src="img/4213447-arrow-load-loading-refresh-reload-restart-sync_115423.png">
-            Roll</button>
+            <img class="diceImgRoll" src="img/button/4213447-arrow-load-loading-refresh-reload-restart-sync_115423.png">
+            ROLL DICE
+          </button>
           <button id="diceBtnHold">
-            <img src="img/enter-down_icon-icons.com_48307 (1).png">
-            Hold</button>
+            <img class="diceImgHold" src="img/button/enter-down_icon-icons.com_48307 (1).png">
+            HOLD
+          </button>
         </div>
-
       </div>
     <!-- end div center for button--> 
-</div>
-
-
+    </div>
+  <script src="app.js"></script>  
   </body>
 </html>

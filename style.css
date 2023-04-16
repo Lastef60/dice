@@ -6,6 +6,7 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
@@ -19,13 +20,12 @@
   height: 100%; 
   display: flex;
   flex-direction: column;
-  align-items : center;
+  align-items: center;
   justify-content: center;
 }
 
 .playerOne{
   background-color: rgb(245, 235, 235);
-
 }
 
 .playerOne, .playerTwo, #scoreOne, #scoreTwo{
@@ -41,17 +41,21 @@
 }
 
 .playerTwo{
-  background-color : white ;
+  background-color : white;
   float: right;
 }
 
 .btn-danger {
-  width : 90px;
-  height : 50px;
+  width: 90px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+
 #scoreOne, #scoreTwo {
-  color : red;
+  color: red;
   font-family: 'lato', sans-serif;
   margin-bottom: 60px;
 }
@@ -65,16 +69,17 @@
   width: 50vh;
   height: 90%;
 }
+
 .newgame{
   align-items: flex-start;
   text-align: center;
   justify-content: center;
 }
+
 #newgame, .dice-buttons>button{
   border:none;
   background-color: transparent;
 }
-
 
 .dice-buttons{
   display: flex;
@@ -82,15 +87,43 @@
   text-align: center;
   justify-content: end;
   align-items: center;
-  height: 100%;
+}
+
+.dice{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
 }
 
 .dice-buttons>button{
   align-items: flex-end;
-  margin : 5px;
+  margin: 5px;
 }
 
-.dice-face[data="1"]{
+.diceImgRoll, .diceImgHold{
+  width: 20px;
+  height: 20px;
+}
+
+.dice-face{
+  justify-content: center;
+  align-items: center;
+}
+.imgDice{
+  width: 70px;
+  height: 70px;
+}
+
+.objDiceImg{
+  width: 70px;
+  height: 70px;
+}
+
+
+/*.dice-face[data="1"]{
   background-image: url('https://cdn.tutsplus.com/active/uploads/legacy/flashtuts/094_3DDiceGame/Tutorial/away3d-diceTexture1.png');
 }
 .dice-face[data="2"]{
@@ -107,6 +140,6 @@
 }
 .dice-face[data="6"]{
   background-image: url('https://cdn.tutsplus.com/active/uploads/legacy/flashtuts/094_3DDiceGame/Tutorial/away3d-diceTexture6.png');
-}
+}*/
 
 
