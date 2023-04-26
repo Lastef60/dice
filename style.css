@@ -15,6 +15,7 @@
   height: 100vh;
 }
 
+
 .playerOne, .playerTwo{
   width : 50vw;
   height: 100%; 
@@ -112,34 +113,11 @@
   justify-content: center;
   align-items: center;
 }
-.imgDice{
-  width: 70px;
-  height: 70px;
+
+#objDiceImg>.imgDice{
+  width: 60px;
+  height: 60px;
 }
 
-.objDiceImg{
-  width: 70px;
-  height: 70px;
-}
-
-
-/*.dice-face[data="1"]{
-  background-image: url('https://cdn.tutsplus.com/active/uploads/legacy/flashtuts/094_3DDiceGame/Tutorial/away3d-diceTexture1.png');
-}
-.dice-face[data="2"]{
-  background-image: url('https://cdn.tutsplus.com/active/uploads/legacy/flashtuts/094_3DDiceGame/Tutorial/away3d-diceTexture2.png');
-}
-.dice-face[data="3"]{
-  background-image: url('https://cdn.tutsplus.com/active/uploads/legacy/flashtuts/094_3DDiceGame/Tutorial/away3d-diceTexture3.png');
-}
-.dice-face[data="4"]{
-  background-image: url('https://cdn.tutsplus.com/active/uploads/legacy/flashtuts/094_3DDiceGame/Tutorial/away3d-diceTexture4.png');
-}
-.dice-face[data="5"]{
-  background-image: url('https://cdn.tutsplus.com/active/uploads/legacy/flashtuts/094_3DDiceGame/Tutorial/away3d-diceTexture5.png');
-}
-.dice-face[data="6"]{
-  background-image: url('https://cdn.tutsplus.com/active/uploads/legacy/flashtuts/094_3DDiceGame/Tutorial/away3d-diceTexture6.png');
-}*/
 
 
