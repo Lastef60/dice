@@ -1,107 +1,134 @@
 const newgameBtn = document.getElementById('newgame')
 const rollBtn = document.getElementById('diceBtnRoll')
 const holdBtn = document.getElementById('diceBtnHold')
-let diceImg = document.getElementById('objDiceImg')
-let diceFace = document.createElement("IMG");
-let globalOne = document.getElementById('scoreOne')
-let globalTwo = document.getElementById('scoreTwo')
-let currentOne = document.getElementById('currentOne')
-let currentTwo = document.getElementById('currentTwo')
-let playerOneP = document.getElementById('playerOneP')
-let playerTwoP = document.getElementById('playerTwoP')
-const playerOne = document.getElementsByClassName('playerOne');
-const playerTwo = document.getElementsByClassName('playerTwo');
-let roundOne = 0;
-let roundTwo = 0;
-let scoreGlobalOne = 0;
-let scoreGlobalTwo = 0;
-let active = playerOne;
+const diceImg = document.getElementById('objDiceImg')
+const diceFace = document.createElement("IMG")
+const globalOne = document.getElementById('scoreOne')
+const globalTwo = document.getElementById('scoreTwo')
+const currentOne = document.getElementById('currentOne')
+const currentTwo = document.getElementById('currentTwo')
+const playerOneP = document.getElementById('playerOneP')
+const playerTwoP = document.getElementById('playerTwoP')
+const playerOne = document.getElementsByClassName('playerOne')
+const playerTwo = document.getElementsByClassName('playerTwo')
+let roundOne = 0
+let roundTwo = 0
+let scoreGlobalOne = 0
+let scoreGlobalTwo = 0
+let active = playerOne
+let random = 0
 
 
-function scoreinit() {
-  roundOne = 0;
-  roundTwo = 0;
-  scoreGlobalOne = 0;
-  scoreGlobalTwo = 0;
-};
+const scoreinit = () => {
+  roundOne = 0
+  roundTwo = 0
+  scoreGlobalOne = 0
+  scoreGlobalTwo = 0
+}
 
-function switchPlayer(active, playerOne, playerTwo) { 
-  // Change le joueur actif
-    if (active === playerOne) {
-    playerTwoP.innerText ='PLAYER 2 \ud83d\udd34';
-    playerOneP.innerText ='PLAYER 1';
-    currentTwo.disabled = false;
-    currentOne.disabled = true;
-    roundOne = 0;
-    roundTwo = 0;
-    currentOne.innerText = roundOne;
-    currentTwo.innerText = roundTwo;
-    roundTwo += random;
-    currentTwo.innerText = roundTwo;
-  } else {
-    playerTwoP.innerText ='PLAYER 2 ';
-    playerOneP.innerText ='PLAYER 1 \ud83d\udd34';
-    currentTwo.disabled = true;
-    currentOne.disabled = false;
-    roundOne = 0;
-    roundTwo = 0;
-    currentOne.innerText = roundOne;
-    currentTwo.innerText = roundTwo;
-    
+const newgame = () => {
+
+  scoreinit();
+  currentOne.innerText = roundOne
+  currentTwo.innerText = roundTwo
+  globalOne.innerText = scoreGlobalOne
+  globalTwo.innerText = scoreGlobalTwo
+  playerOneP.innerText = 'PLAYER 1 \ud83d\udd34'
+  playerTwoP.innerText = 'PLAYER 2 '
+  currentTwo.disabled = true
+  active = playerOne
+}
+
+const activePlayerOne = () => {
+  playerOneP.innerText = 'PLAYER 1 \ud83d\udd34'
+  playerTwoP.innerText = 'PLAYER 2 '
+  roundOne += random
+  currentOne.innerText = roundOne
+  currentTwo.disabled = true
+  currentOne.disabled = false
+  roundTwo = 0
+  diceImg.removeChild(diceFace)
+}
+
+const activePlayerTwo = () => {
+  playerOneP.innerText = 'PLAYER 1 '
+  playerTwoP.innerText = 'PLAYER 2 \ud83d\udd34'
+  roundTwo += random
+  currentTwo.innerText = roundTwo
+  currentTwo.disabled = false
+  currentOne.disabled = true
+  roundOne = 0
+  if (diceImg.contains(diceFace)) { 
+    //pour verifier si diceImg contient diceFace et eviter erreur en console
+    diceImg.removeChild(diceFace)
   }
-};
+}
 
-function newgame() {
-  console.log('ng cliqué');
-  scoreinit(); 
-  currentOne.innerText = roundOne;
-  currentTwo.innerText = roundTwo;
-  globalOne.innerText = scoreGlobalOne;
-  globalTwo.innerText = scoreGlobalTwo;
-  playerOneP.innerText ='PLAYER 1 \ud83d\udd34';
-  currentTwo.disabled = true;
-};
+const switchPlayer = () => {
+  random = 0
+  // Change le joueur actif
+  if (active === playerOne) {
+    activePlayerTwo()
+    active = playerTwo
+  } else {
+    activePlayerOne()
+    active = playerOne
+  }
+}
 
-function rolldice (){
-  let random = Math.floor(Math.random() * 6) + 1; 
+const rolldice = () => {
+  random = Math.floor(Math.random() * 6) + 1
   console.log("roll cliqué", random)
-//diceFace
+  //diceFace
   diceFace.setAttribute("src","img/dice"+random+".png")
-  diceFace.style.width = "60px";
-  diceFace.style.height="60px";
-  diceImg.appendChild(diceFace);
-//random add current
+  diceFace.style.width = "60px"
+  diceFace.style.height="60px"
+  diceImg.appendChild(diceFace)
+  //random add current
   if (active === playerOne) {
-    roundOne += random;
-    currentOne.innerText = roundOne;
+    roundOne += random
+    currentOne.innerText = roundOne
   } else {
-    roundTwo += random;
-    currentTwo.innerText = roundTwo;
-  };
-// if random = 1 current = 0  and change active player
-  if (random ===1) {
-    switchPlayer();
-  };
-};
-
-// si joueur 1 clique sur hold score = score + current et joueur 2 joue
+    roundTwo += random
+    currentTwo.innerText = roundTwo
+  }
+  // if random = 1 current = 0 and change active player
+  if (random === 1) {
+    switchPlayer()
+  }
+}
 function hold() {
-  console.log('hold cliqué')
+  random = Math.floor(Math.random() * 6) + 1
   if (active === playerOne) {
-    scoreGlobalOne += roundOne;
-    globalOne.innerText = scoreGlobalOne;
-    roundOne = 0;
-    currentOne.innerText = 0;
+    scoreGlobalOne += roundOne
+    globalOne.innerText = scoreGlobalOne
+    roundOne = 0
+    currentOne.innerText = roundOne
+    currentOne.disabled = true
+    currentTwo.disabled = false
+    playerOneP.innerText = 'PLAYER 1'
+    playerTwoP.innerText = 'PLAYER 2 \ud83d\udd34'
+    if (scoreGlobalOne >= 100) {
+      alert('Player 1 wins!')
+      newgame()
+    }
   } else {
-    scoreGlobalTwo += roundTwo;
-    globalTwo.innerText = scoreglobalTwo;
-    roundTwo = 0;
-    currentTwo.innerText = 0;
-  };
-  switchPlayer();
-};  
+    scoreGlobalTwo += roundTwo
+    globalTwo.innerText = scoreGlobalTwo
+    roundTwo = 0
+    currentTwo.innerText = roundTwo
+    currentTwo.disabled = true
+    currentOne.disabled = false
+    playerOneP.innerText = 'PLAYER 1 \ud83d\udd34'
+    playerTwoP.innerText = 'PLAYER 2'
+    if (scoreGlobalTwo >= 100) {
+      alert('Player 2 wins!')
+      newgame()
+    }
+  }
+  switchPlayer(active, playerOne, playerTwo)
+}
 
-newgameBtn.addEventListener('click', newgame);
-rollBtn.addEventListener('click', rolldice);
-holdBtn.addEventListener ('click', hold );
-
+newgameBtn.addEventListener('click', newgame)
+rollBtn.addEventListener('click', rolldice)
+holdBtn.addEventListener ('click', hold )
