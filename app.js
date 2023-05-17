@@ -11,6 +11,10 @@ const playerOneP = document.getElementById('playerOneP')
 const playerTwoP = document.getElementById('playerTwoP')
 const playerOne = document.getElementsByClassName('playerOne')
 const playerTwo = document.getElementsByClassName('playerTwo')
+const canvas = document.querySelector('#confetti-canvas')
+const winner = document.getElementById('alertWinner')
+
+
 let roundOne = 0
 let roundTwo = 0
 let scoreGlobalOne = 0
@@ -18,6 +22,23 @@ let scoreGlobalTwo = 0
 let active = playerOne
 let random = 0
 
+const win = () =>{
+  myconfetti = confetti.create(canvas, {
+    resize: true,
+    useWorker: true
+  })
+  myconfetti({
+    particleCount: 200,
+    spread: 160
+  })
+  winner.classList.add('show')
+}
+
+const removeWinnerAlert = () => {
+  setTimeout(() => {
+    winner.classList.remove('show');
+  }, 4000); // Ajoute un délai de 4 secondes = même durée que l'animation sinon animation non visible
+};
 
 const scoreinit = () => {
   roundOne = 0
@@ -37,6 +58,7 @@ const newgame = () => {
   playerTwoP.innerText = 'PLAYER 2 '
   currentTwo.disabled = true
   active = playerOne
+  removeWinnerAlert();
 }
 
 const activePlayerOne = () => {
@@ -94,9 +116,13 @@ const rolldice = () => {
   }
   // if random = 1 current = 0 and change active player
   if (random === 1) {
+    diceFace.setAttribute("src","img/dice"+random+".png")
+    diceFace.style.width = "60px"
+    diceFace.style.height="60px"
     switchPlayer()
   }
 }
+
 function hold() {
   random = Math.floor(Math.random() * 6) + 1
   if (active === playerOne) {
@@ -109,7 +135,7 @@ function hold() {
     playerOneP.innerText = 'PLAYER 1'
     playerTwoP.innerText = 'PLAYER 2 \ud83d\udd34'
     if (scoreGlobalOne >= 100) {
-      alert('Player 1 wins!')
+      win(winner.innerText = ('Le gagnant est le joueur 1'))
       newgame()
     }
   } else {
@@ -122,7 +148,7 @@ function hold() {
     playerOneP.innerText = 'PLAYER 1 \ud83d\udd34'
     playerTwoP.innerText = 'PLAYER 2'
     if (scoreGlobalTwo >= 100) {
-      alert('Player 2 wins!')
+      win(winner.innerText = ('Le gagnant est le joueur 2'))
       newgame()
     }
   }
