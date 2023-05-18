@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@600&display=swap');
 @import url("//fonts.googleapis.com/css?family=Bungee+Shade");
-
+/* END::IMPORTS */
 * {
   font-family: "Bungee Shade";
 }
 
-/* END::IMPORTS */
+
 
 *{
   margin: 0;
